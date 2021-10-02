@@ -83,7 +83,7 @@ function stopRecording(button, hass, config)
     config.cardRec.exportWAV(function(blob) {
         blob.arrayBuffer().then(buffer => {
              hass.callService("recorder_service", "process", {
-                 wav: Array.from(new Uint8Array(buffer)),
+                 wav: buffer,
                  target: config.TARGET
              });
          });
